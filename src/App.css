@@ -9,7 +9,10 @@
   font-size: 18px;
 }
 
-
+.ag-theme-alpine .ag-cell {
+  display:flex;
+  justify-content: center !important;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
