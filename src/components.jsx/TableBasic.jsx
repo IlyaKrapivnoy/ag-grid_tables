@@ -1,5 +1,5 @@
 import React from 'react';
-import { AgGridReact, AgGridColumn } from 'ag-grid-react';
+import { AgGridReact } from 'ag-grid-react';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -25,6 +25,10 @@ const TableBasic = () => {
             headerName: 'Price',
             field: 'price',
         },
+        {
+            headerName: 'Action',
+            field: 'price',
+        },
     ];
 
     const defaultColDef = {
@@ -34,18 +38,29 @@ const TableBasic = () => {
         editable: true,
     };
 
+    let gridApi;
+    const onGridReady = (params) => {
+        gridApi = params.api;
+    };
+    const onExportClick = () => {
+        gridApi.exportDataAsCsv();
+    };
+
     return (
-        <div className='ag-theme-alpine' style={{ height: 400, width: '100%' }}>
-            <AgGridReact
-                rowData={data}
-                columnDefs={columns}
-                defaultColDef={defaultColDef}
+        <>
+            <div
+                className='ag-theme-alpine'
+                style={{ height: 240, width: '100%' }}
             >
-                <AgGridColumn field='make'></AgGridColumn>
-                <AgGridColumn field='model'></AgGridColumn>
-                <AgGridColumn field='price'></AgGridColumn>
-            </AgGridReact>
-        </div>
+                <AgGridReact
+                    rowData={data}
+                    columnDefs={columns}
+                    defaultColDef={defaultColDef}
+                    onGridReady={onGridReady}
+                ></AgGridReact>
+            </div>
+            <button onClick={() => onExportClick()}>Export</button>
+        </>
     );
 };
 
