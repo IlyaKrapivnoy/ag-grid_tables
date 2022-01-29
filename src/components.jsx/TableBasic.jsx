@@ -15,6 +15,7 @@ const TableBasic = () => {
         {
             headerName: 'Car Label',
             field: 'label',
+            cellClass: 'grid-cell-centered',
         },
         {
             headerName: 'Model',
@@ -28,6 +29,7 @@ const TableBasic = () => {
 
     const defaultColDef = {
         flex: 1,
+        cellClass: 'grid-cell-centered',
     };
 
     return (
