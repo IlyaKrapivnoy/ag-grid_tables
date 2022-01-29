@@ -15,7 +15,7 @@ const TableBasic = () => {
         {
             headerName: 'Car Label',
             field: 'label',
-            cellClass: 'grid-cell-centered',
+            checkboxSelection: true,
         },
         {
             headerName: 'Model',
@@ -29,7 +29,9 @@ const TableBasic = () => {
 
     const defaultColDef = {
         flex: 1,
-        cellClass: 'grid-cell-centered',
+        sortable: true,
+        filter: true,
+        editable: true,
     };
 
     return (
