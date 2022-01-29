@@ -2,9 +2,16 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ag-header-cell-text {
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+.ag-theme-alpine .ag-cell {
+  display:flex;
+  justify-content: center !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
