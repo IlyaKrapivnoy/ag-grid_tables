@@ -36,18 +36,21 @@ const TableStyled = ({ title }) => {
             .then((res) => params.api.applyTransaction({ add: res.data }));
     };
 
+    const rowSelectionType = 'single';
+
     return (
         <>
             <h2>{title}</h2>
             <div
                 className='ag-theme-alpine'
-                style={{ height: '60vh', width: '100%' }}
+                style={{ height: '400px', width: '100%' }}
             >
                 <AgGridReact
                     columnDefs={columnDefs}
                     defaultColDef={{ flex: 1, minWidth: 100, editable: true }}
                     enableBrowserTooltips={true}
                     onGridReady={onGridReady}
+                    rowSelection={rowSelectionType}
                 ></AgGridReact>
             </div>
         </>
