@@ -39,9 +39,12 @@ const TableUsers = () => {
                 currentData = [];
             }
             console.log(currentData);
+            const filteredData = currentData.filter(
+                (item) => item.id !== params.data.id
+            );
             localStorage.setItem(
                 'data',
-                JSON.stringify([...currentData, params.data])
+                JSON.stringify([...filteredData, params.data])
             );
         },
     };
@@ -51,6 +54,8 @@ const TableUsers = () => {
     useEffect(() => {
         axiosInstance.get('/users').then((result) => setRowData(result.data));
     }, []);
+
+    console.log(defaultColDef);
 
     return (
         <>
@@ -70,4 +75,4 @@ const TableUsers = () => {
     );
 };
 
-export default TableUsers;
+export default React.memo(TableUsers);
