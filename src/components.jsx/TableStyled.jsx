@@ -12,12 +12,12 @@ const TableStyled = ({ title }) => {
             headerName: 'ID',
             field: 'id',
             tooltipField: 'name',
+            cellClass: (params) =>
+                params.value < 10 ? 'olderThan20' : 'youngerThan20',
         },
         {
             headerName: 'Name',
             field: 'name',
-            cellClass: (params) =>
-                params.value > 20 ? 'olderThan20' : 'youngerThan20',
         },
         {
             headerName: 'Email',
