@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 
+import axiosInstance from '../axiosInstance';
+
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import axios from 'axios';
 
 const TableUsers = () => {
     const columns = [
@@ -36,9 +37,7 @@ const TableUsers = () => {
     const [rowData, setRowData] = useState([]);
 
     useEffect(() => {
-        axios
-            .get('https://jsonplaceholder.typicode.com/users')
-            .then((result) => setRowData(result.data));
+        axiosInstance.get('/users').then((result) => setRowData(result.data));
     }, []);
 
     return (
