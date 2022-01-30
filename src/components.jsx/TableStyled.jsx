@@ -7,6 +7,14 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const TableStyled = ({ title }) => {
+    const defaultColDef = {
+        flex: 1,
+        minWidth: 100,
+        editable: true,
+        filter: true,
+        floatingFilter: true,
+    };
+
     const columnDefs = [
         {
             headerName: 'ID',
@@ -45,7 +53,9 @@ const TableStyled = ({ title }) => {
     };
 
     const isRowSelectable = (node) => {
-        return node.data ? node.data.id % 2 === 0 : false;
+        return node.data
+            ? node.data.id % 2 === 0 || node.data.email.includes('.com')
+            : false;
     };
 
     return (
@@ -57,7 +67,7 @@ const TableStyled = ({ title }) => {
             >
                 <AgGridReact
                     columnDefs={columnDefs}
-                    defaultColDef={{ flex: 1, minWidth: 100, editable: true }}
+                    defaultColDef={defaultColDef}
                     enableBrowserTooltips={true}
                     onGridReady={onGridReady}
                     rowSelection={rowSelectionType}
