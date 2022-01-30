@@ -32,6 +32,16 @@
   background-color: #61dafb;
 }
 
+.olderThan20 {
+  background: green;
+  color:#fff;
+}
+
+.youngerThan20 {
+  background: lightgreen;
+  color:#fff;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -61,3 +71,4 @@
     transform: rotate(360deg);
   }
 }
+
