@@ -56,6 +56,7 @@ const TableStyled = ({ title }) => {
                     onGridReady={onGridReady}
                     rowSelection={rowSelectionType}
                     onSelectionChanged={onSelectionChanged}
+                    rowMultiSelectWithClick={true}
                 ></AgGridReact>
             </div>
         </>
