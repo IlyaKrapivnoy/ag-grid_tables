@@ -12,6 +12,8 @@ const TableStyled = ({ title }) => {
             headerName: 'ID',
             field: 'id',
             tooltipField: 'name',
+            checkboxSelection: true,
+            headerCheckboxSelection: true,
             cellClass: (params) =>
                 params.value < 10 ? 'olderThan20' : 'youngerThan20',
         },
@@ -42,6 +44,10 @@ const TableStyled = ({ title }) => {
         console.log(e.api.getSelectedRows());
     };
 
+    const isRowSelectable = (node) => {
+        return node.data ? node.data.id % 2 === 0 : false;
+    };
+
     return (
         <>
             <h2>{title}</h2>
@@ -57,6 +63,7 @@ const TableStyled = ({ title }) => {
                     rowSelection={rowSelectionType}
                     onSelectionChanged={onSelectionChanged}
                     rowMultiSelectWithClick={true}
+                    isRowSelectable={isRowSelectable}
                 ></AgGridReact>
             </div>
         </>
