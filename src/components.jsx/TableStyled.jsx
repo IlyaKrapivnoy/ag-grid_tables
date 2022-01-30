@@ -46,6 +46,10 @@ const TableStyled = ({ title }) => {
         {
             headerName: 'Age',
             field: 'age',
+            cellStyle: (params) =>
+                params.value > 20
+                    ? { background: 'green' }
+                    : { background: 'lightgreen' },
         },
         {
             headerName: 'Birth Year',
