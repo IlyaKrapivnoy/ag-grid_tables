@@ -36,7 +36,11 @@ const TableStyled = ({ title }) => {
             .then((res) => params.api.applyTransaction({ add: res.data }));
     };
 
-    const rowSelectionType = 'single';
+    const rowSelectionType = 'multiple';
+
+    const onSelectionChanged = (e) => {
+        console.log(e.api.getSelectedRows());
+    };
 
     return (
         <>
@@ -51,6 +55,7 @@ const TableStyled = ({ title }) => {
                     enableBrowserTooltips={true}
                     onGridReady={onGridReady}
                     rowSelection={rowSelectionType}
+                    onSelectionChanged={onSelectionChanged}
                 ></AgGridReact>
             </div>
         </>
