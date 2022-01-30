@@ -6,7 +6,7 @@ import axiosInstance from '../axiosInstance';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
-const TableUsers = () => {
+const TableUsers = ({ filteredArr }) => {
     const columns = [
         {
             headerName: 'Username',
@@ -56,6 +56,8 @@ const TableUsers = () => {
     }, []);
 
     console.log(defaultColDef);
+
+    console.log({ filteredArr });
 
     return (
         <>
