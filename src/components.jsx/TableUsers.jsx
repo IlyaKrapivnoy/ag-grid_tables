@@ -32,6 +32,18 @@ const TableUsers = () => {
         sortable: true,
         filter: true,
         editable: true,
+        onCellValueChanged: (params) => {
+            console.log(params);
+            let currentData = JSON.parse(localStorage.getItem('data'));
+            if (!Array.isArray(currentData)) {
+                currentData = [];
+            }
+            console.log(currentData);
+            localStorage.setItem(
+                'data',
+                JSON.stringify([...currentData, params.data])
+            );
+        },
     };
 
     const [rowData, setRowData] = useState([]);
