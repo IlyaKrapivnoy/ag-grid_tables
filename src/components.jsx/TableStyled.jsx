@@ -1,68 +1,40 @@
 import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 
+import axiosInstance from '../axiosInstance';
+
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const TableStyled = ({ title }) => {
-    const data = [
-        {
-            name: 'Tomas',
-            age: 21,
-            birthYear: 2001,
-            phoneNumber: '098-287-65-20',
-        },
-        {
-            name: 'Lucas',
-            age: 22,
-            birthYear: 2000,
-            phoneNumber: '098-233-33-22',
-        },
-        {
-            name: 'Donald',
-            age: 32,
-            birthYear: 1990,
-            phoneNumber: '097-123-63-10',
-        },
-        {
-            name: 'Hannah',
-            age: 21,
-            birthYear: 2001,
-            phoneNumber: '050-227-21-98',
-        },
-        {
-            name: 'Peter',
-            age: 11,
-            birthYear: 2011,
-            phoneNumber: '096-121-21-61',
-        },
-    ];
-
     const columnDefs = [
         {
-            headerName: 'Name',
-            field: 'name',
+            headerName: 'ID',
+            field: 'id',
             tooltipField: 'name',
         },
         {
-            headerName: 'Age',
-            field: 'age',
-            // cellStyle: (params) =>
-            //     params.value > 20
-            //         ? { background: 'green' }
-            //         : { background: 'lightgreen' },
+            headerName: 'Name',
+            field: 'name',
             cellClass: (params) =>
                 params.value > 20 ? 'olderThan20' : 'youngerThan20',
         },
         {
-            headerName: 'Birth Year',
-            field: 'birthYear',
+            headerName: 'Email',
+            field: 'email',
         },
         {
-            headerName: 'Phone Number',
-            field: 'phoneNumber',
+            headerName: 'Comment',
+            field: 'body',
         },
     ];
+
+    const onGridReady = (params) => {
+        console.log('grid is ready');
+        axiosInstance
+            .get('/comments')
+            .then((res) => params.api.applyTransaction({ add: res.data }));
+    };
 
     return (
         <>
@@ -72,10 +44,10 @@ const TableStyled = ({ title }) => {
                 style={{ height: '60vh', width: '100%' }}
             >
                 <AgGridReact
-                    rowData={data}
                     columnDefs={columnDefs}
-                    defaultColDef={{ flex: 1, minWidth: 100 }}
+                    defaultColDef={{ flex: 1, minWidth: 100, editable: true }}
                     enableBrowserTooltips={true}
+                    onGridReady={onGridReady}
                 ></AgGridReact>
             </div>
         </>
