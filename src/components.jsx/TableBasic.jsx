@@ -4,7 +4,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
-const TableBasic = () => {
+const TableBasic = ({ title }) => {
     const data = [
         { label: 'Toyota', model: 'Celica', price: 35000 },
         { label: 'Ford', model: 'Mondeo', price: 32000 },
@@ -48,6 +48,7 @@ const TableBasic = () => {
 
     return (
         <>
+            <h2>{title}</h2>
             <div
                 className='ag-theme-alpine'
                 style={{ height: 240, width: '100%' }}

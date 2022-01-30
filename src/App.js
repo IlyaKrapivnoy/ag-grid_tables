@@ -7,9 +7,9 @@ function App() {
     return (
         <div className='App'>
             <h1>AG Grid</h1>
-            <TableBasic />
-            <TableUsers />
-            <TableStyled />
+            <TableBasic title='0. Car Table' />
+            <TableUsers title='1. Users Table' />
+            <TableStyled title='2. Styled Table' />
         </div>
     );
 }

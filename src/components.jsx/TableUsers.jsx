@@ -6,7 +6,7 @@ import axiosInstance from '../axiosInstance';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
-const TableUsers = () => {
+const TableUsers = ({ title }) => {
     const columns = [
         {
             headerName: 'Username',
@@ -59,6 +59,7 @@ const TableUsers = () => {
 
     return (
         <>
+            <h2>{title}</h2>
             <div
                 className='ag-theme-alpine'
                 style={{ height: '80vh', width: '100%' }}
