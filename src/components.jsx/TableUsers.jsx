@@ -62,7 +62,7 @@ const TableUsers = ({ title }) => {
             <h2>{title}</h2>
             <div
                 className='ag-theme-alpine'
-                style={{ height: '80vh', width: '100%' }}
+                style={{ height: '60vh', width: '100%' }}
             >
                 <AgGridReact
                     rowData={rowData}

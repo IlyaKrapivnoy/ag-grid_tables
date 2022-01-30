@@ -51,7 +51,7 @@ const TableBasic = ({ title }) => {
             <h2>{title}</h2>
             <div
                 className='ag-theme-alpine'
-                style={{ height: 240, width: '100%' }}
+                style={{ height: 200, width: '100%' }}
             >
                 <AgGridReact
                     rowData={data}
@@ -60,7 +60,9 @@ const TableBasic = ({ title }) => {
                     onGridReady={onGridReady}
                 ></AgGridReact>
             </div>
-            <button onClick={() => onExportClick()}>Export</button>
+            <button className='exportButton' onClick={() => onExportClick()}>
+                Export
+            </button>
         </>
     );
 };
