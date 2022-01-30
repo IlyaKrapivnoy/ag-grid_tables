@@ -42,6 +42,7 @@ const TableStyled = ({ title }) => {
         {
             headerName: 'Name',
             field: 'name',
+            tooltipField: 'name',
         },
         {
             headerName: 'Age',
@@ -74,6 +75,7 @@ const TableStyled = ({ title }) => {
                     rowData={data}
                     columnDefs={columnDefs}
                     defaultColDef={{ flex: 1, minWidth: 100 }}
+                    enableBrowserTooltips={true}
                 ></AgGridReact>
             </div>
         </>
