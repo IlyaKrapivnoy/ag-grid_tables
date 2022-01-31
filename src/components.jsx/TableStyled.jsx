@@ -7,7 +7,8 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const TableStyled = ({ title }) => {
-    const [gridApi, setGridApi] = useState();
+    const [gridApi, setGridApi] = useState(null);
+    const [gridColumnApi, setGridColumnApi] = useState(null);
 
     const defaultColDef = {
         flex: 1,
@@ -38,11 +39,13 @@ const TableStyled = ({ title }) => {
         {
             headerName: 'Comment',
             field: 'body',
+            // hide: true,
         },
     ];
 
     const onGridReady = (params) => {
         setGridApi(params);
+        setGridColumnApi(params.columnApi);
         console.log('grid is ready');
         axiosInstance.get('/comments').then((res) => {
             params.api.applyTransaction({ add: res.data });
@@ -66,6 +69,9 @@ const TableStyled = ({ title }) => {
         gridApi.api.paginationSetPageSize(pageSize);
     };
 
+    const showColumn = () => {
+        gridColumnApi.setColumnVisible('body', false);
+    };
     return (
         <>
             <h2>{title}</h2>
@@ -75,6 +81,8 @@ const TableStyled = ({ title }) => {
                 <option value='50'>50</option>
                 <option value='100'>100</option>
             </select>
+
+            <button onClick={showColumn}>Show</button>
 
             <div
                 className='ag-theme-alpine'
