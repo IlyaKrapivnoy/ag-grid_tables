@@ -63,7 +63,7 @@ const TableStyled = ({ title }) => {
             <h2>{title}</h2>
             <div
                 className='ag-theme-alpine'
-                style={{ height: '400px', width: '100%' }}
+                style={{ height: '567px', width: '100%' }}
             >
                 <AgGridReact
                     columnDefs={columnDefs}
@@ -74,6 +74,9 @@ const TableStyled = ({ title }) => {
                     onSelectionChanged={onSelectionChanged}
                     rowMultiSelectWithClick={true}
                     isRowSelectable={isRowSelectable}
+                    pagination={true}
+                    paginationPageSize={10}
+                    paginationAutoPageSize={true}
                 ></AgGridReact>
             </div>
         </>
