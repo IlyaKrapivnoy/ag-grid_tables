@@ -71,7 +71,8 @@ const TableStyled = ({ title }) => {
     };
 
     const showColumn = () => {
-        gridColumnApi.setColumnVisible('body', hideColumn);
+        // gridColumnApi.setColumnVisible('body', hideColumn);
+        gridColumnApi.setColumnsVisible(['body', 'email'], hideColumn);
         setHideColumn(!hideColumn);
     };
     return (
@@ -84,7 +85,7 @@ const TableStyled = ({ title }) => {
                 <option value='100'>100</option>
             </select>
 
-            <button onClick={showColumn}>Show</button>
+            <button onClick={showColumn}>Toggle Columns</button>
 
             <div
                 className='ag-theme-alpine'
