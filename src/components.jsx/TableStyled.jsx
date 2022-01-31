@@ -41,9 +41,10 @@ const TableStyled = ({ title }) => {
 
     const onGridReady = (params) => {
         console.log('grid is ready');
-        axiosInstance
-            .get('/comments')
-            .then((res) => params.api.applyTransaction({ add: res.data }));
+        axiosInstance.get('/comments').then((res) => {
+            params.api.applyTransaction({ add: res.data });
+            params.api.paginationGoToPage(10);
+        });
     };
 
     const rowSelectionType = 'multiple';
