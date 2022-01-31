@@ -9,6 +9,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 const TableStyled = ({ title }) => {
     const [gridApi, setGridApi] = useState(null);
     const [gridColumnApi, setGridColumnApi] = useState(null);
+    const [hideColumn, setHideColumn] = useState(false);
 
     const defaultColDef = {
         flex: 1,
@@ -70,7 +71,8 @@ const TableStyled = ({ title }) => {
     };
 
     const showColumn = () => {
-        gridColumnApi.setColumnVisible('body', false);
+        gridColumnApi.setColumnVisible('body', hideColumn);
+        setHideColumn(!hideColumn);
     };
     return (
         <>
