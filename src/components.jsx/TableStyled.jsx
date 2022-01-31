@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 
 import axiosInstance from '../axiosInstance';
@@ -7,6 +7,8 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const TableStyled = ({ title }) => {
+    const [gridApi, setGridApi] = useState();
+
     const defaultColDef = {
         flex: 1,
         minWidth: 100,
@@ -40,6 +42,7 @@ const TableStyled = ({ title }) => {
     ];
 
     const onGridReady = (params) => {
+        setGridApi(params);
         console.log('grid is ready');
         axiosInstance.get('/comments').then((res) => {
             params.api.applyTransaction({ add: res.data });
@@ -59,10 +62,14 @@ const TableStyled = ({ title }) => {
             : false;
     };
 
+    const onPaginationChange = (pageSize) => {
+        gridApi.api.paginationSetPageSize(pageSize);
+    };
+
     return (
         <>
             <h2>{title}</h2>
-            <select onChange={(e) => console.log(e.target.value)}>
+            <select onChange={(e) => onPaginationChange(e.target.value)}>
                 <option value='10'>10</option>
                 <option value='25'>25</option>
                 <option value='50'>50</option>
@@ -84,7 +91,7 @@ const TableStyled = ({ title }) => {
                     isRowSelectable={isRowSelectable}
                     pagination={true}
                     paginationPageSize={10}
-                    paginationAutoPageSize={true}
+                    // paginationAutoPageSize={true}
                 ></AgGridReact>
             </div>
         </>
